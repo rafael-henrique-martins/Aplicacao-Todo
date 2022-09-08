@@ -1,5 +1,7 @@
 package com.rhmrmtm.todo.domain;
 
+import lombok.Builder;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "TODO")
+@Builder
 public class Todo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

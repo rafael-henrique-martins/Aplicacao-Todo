@@ -1,8 +1,10 @@
 package com.rhmrmtm.todo.service.impl;
 
 import com.rhmrmtm.todo.domain.Todo;
+import com.rhmrmtm.todo.domain.dto.TodoDTO;
 import com.rhmrmtm.todo.repository.TodoRepository;
 import com.rhmrmtm.todo.service.TodoService;
+import com.rhmrmtm.todo.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,26 @@ public class TodoServiceImpl implements TodoService {
 
     @Autowired
     private TodoRepository todoRepository;
+
+
+    public TodoDTO findById(Integer id){
+        Todo obj = todoRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+        TodoDTO objDTO = coverte(obj);
+
+        return objDTO;
+    }
+
+    private TodoDTO coverte(Todo obj) {
+         return TodoDTO
+                 .builder()
+                 .id(obj.getId())
+                 .titulo(obj.getTitulo())
+                 .descricao(obj.getDescricao())
+                 .finalizado(obj.getFinalizado())
+                 .dataParaFInalizar(obj.getDataParaFInalizar())
+                 .build();
+    }
 
     public void instanciaDados(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
