@@ -44,7 +44,7 @@ public class TodoServiceImpl implements TodoService {
         List<Todo> lista = todoRepository.findAll();
         List<TodoDTO> l = new ArrayList<>();
         for (Todo x : lista) {
-            if (!x.getFinalizado()) {
+            if (x.getFinalizado()) {
                 TodoDTO dto = (coverte(x));
                 l.add(dto);
             }
