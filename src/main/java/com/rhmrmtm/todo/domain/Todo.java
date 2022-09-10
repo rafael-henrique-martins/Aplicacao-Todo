@@ -2,13 +2,12 @@ package com.rhmrmtm.todo.domain;
 
 import lombok.Builder;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity(name = "TODO")
 @Builder
@@ -19,14 +18,14 @@ public class Todo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-    
 	private String titulo;
 	private String descricao;
 	private LocalDateTime dataParaFInalizar;
 	private Boolean finalizado = false;
 	
 	public Todo() {}
-	
+
+
 	public Todo(Integer id, String titulo, String descricao, LocalDateTime dataParaFInalizar, Boolean finalizado) {
 		super();
 		this.id = id;
@@ -35,6 +34,7 @@ public class Todo implements Serializable{
 		this.dataParaFInalizar = dataParaFInalizar;
 		this.finalizado = finalizado;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -80,6 +80,7 @@ public class Todo implements Serializable{
 		return serialVersionUID;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,6 +88,7 @@ public class Todo implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {

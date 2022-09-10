@@ -63,5 +63,4 @@ public class TodoDTO {
     public void setFinalizado(Boolean finalizado) {
         this.finalizado = finalizado;
     }
-
 }
